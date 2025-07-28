@@ -1,0 +1,188 @@
+/* Style de base et police */
+body {
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: 'Tajawal', sans-serif; /* Police qui supporte bien l'arabe */
+}
+
+.page-content {
+    padding: 2rem;
+    text-align: center;
+    height: 200vh; /* Juste pour permettre le défilement */
+}
+
+/* ===== Bouton flottant pour ouvrir ===== */
+#open-chat-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    z-index: 999;
+}
+
+#open-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+#open-chat-btn img {
+    width: 36px;
+    height: 36px;
+}
+
+/* ===== Conteneur principal du Chatbot ===== */
+#chatbot-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 420px;
+    height: 600px;
+    max-height: calc(100vh - 40px);
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+    transform: scale(0.5); /* Caché par défaut */
+    transform-origin: bottom right;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#chatbot-container.visible {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mode Plein écran */
+#chatbot-container.fullscreen {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    max-height: 100vh;
+}
+
+/* En-tête */
+#chatbot-header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.header-title { display: flex; align-items: center; }
+.header-icon { width: 24px; height: 24px; margin-left: 10px; } /* margin-left car RTL */
+.header-buttons button { background: none; border: none; color: white; font-size: 22px; cursor: pointer; margin-right: 10px;}
+
+/* Corps de la discussion */
+#chat-body {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Style des bulles de message */
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-start; /* flex-start est à droite en RTL */
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+    background-color: #e4e6eb;
+    color: #050505;
+    align-self: flex-end; /* flex-end est à gauche en RTL */
+    border-bottom-left-radius: 4px;
+}
+
+/* Indicateur de chargement "typing..." */
+.bot-message.loading span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #999;
+    margin: 0 1px;
+    animation: bounce 1.2s infinite;
+}
+.bot-message.loading span:nth-child(2) { animation-delay: 0.15s; }
+.bot-message.loading span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+}
+
+/* Zone de saisie */
+#chat-input-container {
+    padding: 12px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+    flex-shrink: 0;
+}
+
+#chat-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#user-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    outline: none;
+    font-family: 'Tajawal', sans-serif;
+    transition: border-color 0.2s;
+}
+#user-input:focus { border-color: #007bff; }
+
+#send-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+#send-btn:hover { background-color: #0056b3; }

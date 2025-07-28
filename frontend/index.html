@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Darija</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Ceci est un contenu de page factice pour montrer que le chatbot est une superposition -->
+    <div class="page-content">
+        <h1>موقع تجريبي</h1>
+        <p>محتوى الصفحة الرئيسية يظهر هنا. الشاتبوت يظهر في الأسفل على اليمين.</p>
+    </div>
+
+    <!-- ===== Conteneur du Chatbot ===== -->
+    <div id="chatbot-container">
+        <!-- En-tête du Chatbot -->
+        <div id="chatbot-header">
+            <div class="header-title">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI26bfUIvI4gI-E1BFX-R4l0f1E3Zj23ZwKg&s" alt="bot icon" class="header-icon">
+                <span>المساعد الذكي</span>
+            </div>
+            <div class="header-buttons">
+                <button id="fullscreen-btn" title="Plein écran">❐</button>
+                <button id="close-btn" title="Fermer">✕</button>
+            </div>
+        </div>
+        
+        <!-- Corps de la discussion -->
+        <div id="chat-body">
+            <!-- Les messages seront ajoutés ici par JavaScript -->
+        </div>
+
+        <!-- Zone de saisie -->
+        <div id="chat-input-container">
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="كتب سؤالك هنا..." autocomplete="off" autofocus>
+                <button type="submit" id="send-btn" title="إرسال">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bouton flottant pour ouvrir le chatbot -->
+    <button id="open-chat-btn">
+        <img src="https://www.hcp.ma/photo/art/grande/60457162-44244869.jpg?v=1637594416" alt="Chat Icon" title="افتح المحادثة"/>
+    </button>
+    
+    <script src="script.js"></script>
+</body>
+</html>
