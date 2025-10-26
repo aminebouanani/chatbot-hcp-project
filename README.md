@@ -75,7 +75,7 @@ pip install -r requirements.txt
 1.  In the `backend` directory, create a new file named `.env`.
 2.  Add your Google Gemini API key to this file:
 
-    ```    GOOGLE_API_KEY="YOUR_SECRET_API_KEY_HERE"
+    ```bash    GOOGLE_API_KEY="YOUR_SECRET_API_KEY_HERE"
     ```
 
 ### 6. Run the Application
