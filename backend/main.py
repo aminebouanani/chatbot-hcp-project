@@ -7,22 +7,29 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sentence_transformers import SentenceTransformer
 from deep_translator import GoogleTranslator
+from dotenv import load_dotenv
+
 # MODIFICATION : Importation de la nouvelle bibliothèque de détection de langue
 from langdetect import detect
-
+load_dotenv()
 # --- 1. Configuration et Chargement des Modèles et Données ---
 
 print("🚀 Démarrage du serveur backend du chatbot (Mode Complet)...")
 
 # Configuration de l'API Google Gemini
 try:
-    GOOGLE_API_KEY = "AIzaSyC_SP-vD9LQn69CN-PjLH0Vz4DlnSbc7Hw"  # Votre clé API
+    # Get the API key from the environment variables
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+    # Check if the key was loaded
+    if not GOOGLE_API_KEY:
+        raise ValueError("Clé API Google non trouvée. Assurez-vous qu'elle est définie dans le fichier .env")
+
     genai.configure(api_key=GOOGLE_API_KEY)
     gemini = genai.GenerativeModel("gemini-1.5-flash")
     print("✅ Clé API Google configurée et modèle 'gemini-1.5-flash' prêt.")
 except Exception as e:
     print(f"❌ ERREUR CRITIQUE lors de la configuration de Gemini : {e}")
-    gemini = None
 
 # Chargement des modèles et des traducteurs
 try:

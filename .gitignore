@@ -1,0 +1,24 @@
+# Environment variables - Hides your API keys!
+backend/.env
+
+# Python virtual environment
+venv/
+/venv/
+.venv/
+/.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# IDE configuration files (for PyCharm)
+.idea/
+
+# Large data files you don't want on GitHub
+backend/data_index.faiss
+backend/structured_embeddings.npy
+downloads.zip
+
+# Operating System files
+.DS_Store
+Thumbs.db
