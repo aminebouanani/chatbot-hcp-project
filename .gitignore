@@ -14,10 +14,7 @@ __pycache__/
 # IDE configuration files (for PyCharm)
 .idea/
 
-# Large data files you don't want on GitHub
-backend/data_index.faiss
-backend/structured_embeddings.npy
-downloads.zip
+
 
 # Operating System files
 .DS_Store
